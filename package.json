@@ -1,0 +1,32 @@
+{
+  "name": "unified-bookmark",
+  "version": "0.0.1",
+  "description": "Unified Bookmark manager across browser and platforms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coolguy1990/unified-bookmark.git"
+  },
+  "keywords": [
+    "bookmarks",
+    "firefox",
+    "chrome"
+  ],
+  "author": "Kunal Mangaraj <mangaraj.kunal@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coolguy1990/unified-bookmark/issues"
+  },
+  "homepage": "https://github.com/coolguy1990/unified-bookmark#readme",
+  "devDependencies": {
+    "nodemon": "^1.15.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "sqlite3": "^3.1.13"
+  }
+}
