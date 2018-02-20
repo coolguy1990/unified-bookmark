@@ -57,6 +57,21 @@ const getChildren = (children) => {
   return bookmarks;
 };
 
+const lastModified = file => new Promise((resolve) => {
+  fs.stat(file, (err, data) => {
+    if (err) {
+      resolve(0);
+    } else {
+      const modifiedSecondsAgo = (new Date().getTime() - new Date(data.mtime).getTime()) / 1000;
+
+      resolve({
+        last_modified_timestamp: new Date(data.mtime).getTime(),
+        modifiedSecondsAgo: modifiedSecondsAgo
+      });
+    }
+  });
+});
+
 const getBookmarks = file => new Promise((resolve) => {
   fs.readFile(file, 'utf8', (err, data) => {
     if (err) {
@@ -96,5 +111,6 @@ module.exports = {
   getDirectory,
   normalize,
   getBookmarks,
-  getChildren
+  getChildren,
+  lastModified
 };
