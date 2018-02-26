@@ -1,7 +1,7 @@
 const chrome = require('./browsers/chrome');
-const DB = require('./db');
 const filePath = chrome.getDirectory(process.platform);
-const db = new DB();
+const DB = require('./models');
+
 async function getFilteredBookmarks() {
   const fileModified = await chrome.lastModified(filePath);
   const bookmarks = await chrome.getBookmarks(filePath);

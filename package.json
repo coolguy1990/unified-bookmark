@@ -27,6 +27,10 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
+    "rxdb": "^7.3.3",
+    "rxjs": "^5.5.6",
+    "sequelize": "^4.34.0",
+    "sequelize-cli": "^4.0.0",
     "sqlite3": "^3.1.13"
   }
 }

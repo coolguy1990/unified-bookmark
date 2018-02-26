@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "bookmarkDB",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": "./bookmarks.sqlite"
+  },
+  "production": {
+    "username": null,
+    "password": null,
+    "database": "bookmarkDB",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": "./bookmarks.sqlite"
+  }
+}
