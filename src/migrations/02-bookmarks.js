@@ -1,9 +1,17 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('history', {
+    return queryInterface.createTable('bookmark', {
       id: Sequelize.INTEGER,
       uuid: Sequelize.UUID,
-      last_updated: Sequelize.STRING,
+      title: Sequelize.STRING,
+      url: Sequelize.TEXT,
+      favicon: Sequelize.TEXT,
+      bookmark_id: Sequelize.INTEGER,
+      type: Sequelize.STRING,
+      date_added: Sequelize.STRING,
+      date_modified: Sequelize.STRING,
+      folder: Sequelize.STRING,
+      sync_transaction_version: Sequelize.INTEGER,
       updatedAt: {
         type: Sequelize.DATE,
         allowNull: false
@@ -19,6 +27,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('history');
+    return queryInterface.dropTable('bookmark');
   }
 };

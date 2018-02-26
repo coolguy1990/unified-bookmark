@@ -27,8 +27,8 @@ const normalize = item => ({
   favicon: utils.getFavicon(item.url),
   folder: item.folder || '',
   id: item.id,
-  date_added: item.date_added || 0,
-  date_modified: item.date_modified || 0,
+  date_added: +item.date_added || 0,
+  date_modified: +item.date_modified || 0,
   sync_transaction_version: item.sync_transaction_version || 0,
   type: item.type || ''
 });
