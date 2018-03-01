@@ -1,20 +1,35 @@
 const chrome = require('./browsers/chrome');
 const filePath = chrome.getDirectory(process.platform);
 const DB = require('./models');
-const snooze = ms => new Promise(resolve => setTimeout(resolve, ms));
+const python = require('python-shell');
+
+function timers (time) {
+  return new Promise((resolve, reject) => {
+    python.run('my_time.py', {
+      args: [time],
+      scriptPath: '/src'
+    }, function (err, result) {
+      if (err) reject(err);
+
+      resolve(result);
+    });
+  });
+}
+
 async function getFilteredBookmarks() {
   const fileModified = await chrome.lastModified(filePath);
   const bookmarks = await chrome.getBookmarks(filePath);
   const dbHistory = await getHistory();
   const dbLastModified = dbHistory.result ? dbHistory.result * 10000: 0;
+  const data = bookmarks.filter(bookmark => bookmark.date_added >= 0);
+  const book = data[data.length-1].date_added;
 
-  const data = bookmarks.filter(bookmark => bookmark.date_added >= dbLastModified);
+  const timer = await timers(book);
 
-  // console.log(data.length, data[data.length - 1]);
-  // console.log(data.length);
-
-  return data;
+  console.log(timer);
 }
+
+
 
 async function saveBookmark(bookmark) {
   let saveData = DB.bookmark.findOrCreate({
