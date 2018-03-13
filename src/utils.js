@@ -1,4 +1,5 @@
 const url = require('url');
+const path = require('path');
 
 const getFavicon = (link) => {
   if (link && link.length) {
@@ -21,7 +22,12 @@ const removeDuplicates = (array, prop) => {
   });
 };
 
+const resolve = (dir) => {
+  return path.join(__dirname, '..', dir);
+}
+
 module.exports = {
   getFavicon,
-  removeDuplicates
+  removeDuplicates,
+  resolve
 };

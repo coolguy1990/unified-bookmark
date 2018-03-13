@@ -16,6 +16,17 @@ const getDirectory = (platform, profile = 'Default') => {
         'Bookmarks'
       );
       break;
+    case 'linux':
+      return path.join(
+        os.homedir(),
+        '.config',
+        'google-chrome',
+        profile,
+        'Bookmarks'
+      );
+      break;
+    case 'win32':
+      break;
     default:
       return '';
   }

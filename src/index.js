@@ -2,12 +2,13 @@ const chrome = require('./browsers/chrome');
 const filePath = chrome.getDirectory(process.platform);
 const DB = require('./models');
 const python = require('python-shell');
+const {resolve} = require('./utils');
 
 function timers (time) {
   return new Promise((resolve, reject) => {
     python.run('my_time.py', {
       args: [time],
-      scriptPath: '/src'
+      scriptPath: resolve('src')
     }, function (err, result) {
       if (err) reject(err);
 
@@ -79,9 +80,10 @@ async function getHistory() {
 }
 
 async function processBookmarks() {
+
   const filteredBookmarks = await getFilteredBookmarks();
 
-  // console.log(filteredBookmarks);
+  console.log(filteredBookmarks);
 
   // let interval = 0.3 * 1000; // 10 seconds;
 
